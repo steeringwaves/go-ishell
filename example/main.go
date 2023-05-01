@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/abiosoft/ishell/v2"
 	"github.com/fatih/color"
+	ishell "github.com/steeringwaves/go-ishell"
 )
 
 func main() {
@@ -34,7 +34,7 @@ func main() {
 			c.Print("Username: ")
 			username := c.ReadLine()
 			c.Print("Password: ")
-			password := c.ReadPassword()
+			password := c.ReadWithMask('*')
 
 			// do something with username and password
 			c.Println("Your inputs were", username, "and", password+".")

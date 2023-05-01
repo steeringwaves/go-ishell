@@ -1,9 +1,10 @@
+//go:build darwin || dragonfly || freebsd || (linux && !appengine) || netbsd || openbsd || solaris
 // +build darwin dragonfly freebsd linux,!appengine netbsd openbsd solaris
 
 package ishell
 
 import (
-	"github.com/abiosoft/readline"
+	readline "github.com/steeringwaves/go-readline"
 )
 
 func clearScreen(s *Shell) error {

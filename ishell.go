@@ -18,9 +18,9 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/abiosoft/readline"
 	"github.com/fatih/color"
 	shlex "github.com/flynn-archive/go-shlex"
+	readline "github.com/steeringwaves/go-readline"
 )
 
 const (
