@@ -1,4 +1,4 @@
-module github.com/steeringwaves/go-ishell
+module github.com/steeringwaves/go-ishell/v2
 
 go 1.16
 

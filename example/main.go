@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/fatih/color"
-	ishell "github.com/steeringwaves/go-ishell"
+	ishell "github.com/steeringwaves/go-ishell/v2"
 )
 
 func main() {
