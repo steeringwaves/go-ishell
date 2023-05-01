@@ -56,6 +56,21 @@ func (s *shellReader) readPassword() string {
 	return password
 }
 
+func (s *shellReader) readWithMaskErr(m rune) (string, error) {
+	prompt := ""
+	if s.buf.Len() > 0 {
+		prompt = s.buf.String()
+		s.buf.Truncate(0)
+	}
+	entry, err := s.scanner.ReadWithMask(m, prompt)
+	return string(entry), err
+}
+
+func (s *shellReader) readWithMask(m rune) string {
+	entry, _ := s.readWithMaskErr(m)
+	return entry
+}
+
 func (s *shellReader) setMultiMode(use bool) {
 	s.readingMulti = use
 }

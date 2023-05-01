@@ -21,6 +21,11 @@ type Actions interface {
 	ReadPassword() string
 	// ReadPasswordErr is ReadPassword but returns error as well
 	ReadPasswordErr() (string, error)
+	// ReadWithMask reads a line from standard input masking echo'd characters.
+	// Note that this only works as expected when the standard input is a terminal.
+	ReadWithMask(m rune) string
+	// ReadWithMaskErr is ReadWithMask but returns error as well
+	ReadWithMaskErr(m rune) (string, error)
 	// ReadMultiLinesFunc reads multiple lines from standard input. It passes each read line to
 	// f and stops reading when f returns false.
 	ReadMultiLinesFunc(f func(string) bool) string
@@ -100,6 +105,14 @@ func (s *shellActionsImpl) ReadPassword() string {
 
 func (s *shellActionsImpl) ReadPasswordErr() (string, error) {
 	return s.reader.readPasswordErr()
+}
+
+func (s *shellActionsImpl) ReadWithMask(m rune) string {
+	return s.reader.readWithMask(m)
+}
+
+func (s *shellActionsImpl) ReadWithMaskErr(m rune) (string, error) {
+	return s.reader.readWithMaskErr(m)
 }
 
 func (s *shellActionsImpl) ReadMultiLinesFunc(f func(string) bool) string {
